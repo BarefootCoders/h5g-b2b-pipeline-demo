@@ -1,0 +1,13 @@
+migration:
+  name: deploy-foo-v1-to-qa
+  deployments:
+  - type: game_asset
+    jurisdiction: nj
+    integrator: nyx
+    sdlc_environment: qa
+    game:
+      name: test
+      jurisdiction: nj
+      version:
+        nexus_identifier: test
+        version: 1.0.0
