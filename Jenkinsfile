@@ -24,7 +24,7 @@ pipeline {
     PROJECT_GIT_URL = "ssh://git@10.55.10.200:7999/bbin/b2b-asset-pipeline-demo.git"
     GIT_CLONE_CREDENTIAL_NAME = 'b2b-pipeline-deployer-bitbucket-deploy-key'
     GOOGLE_APPLICATION_CREDENTIAL_NAME = "SERVICE-ACCOUNT-asset-deployer.iam.gserviceaccount.com"
-    CLI_DOCKER_IMAGE = "gcr.io/h5g-demo-img/h5g-b2b-pipeline-deployment-manager:cli"
+    CLI_DOCKER_IMAGE = "gcr.io/h5g-infrastructure/h5g-b2b-pipeline-deployment-manager:cli"
   }
 
   stages {
