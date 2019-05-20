@@ -65,7 +65,7 @@ pipeline {
           withCredentials([file(credentialsId: env.GOOGLE_APPLICATION_CREDENTIAL_NAME, variable: "GOOGLE_APPLICATION_CREDENTIAL_FILE")]) {
             sshagent (credentials: [env.GIT_CLONE_CREDENTIAL_NAME]) {
               sh 'echo "Authenticating as user: $(cat $GOOGLE_APPLICATION_CREDENTIAL_FILE | grep client_email)"'
-              sh "docker pull ${env.CLI_DOCKER_IMAGE}"
+              sh "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIAL_FILE gcloud auth configure-docker && docker pull ${env.CLI_DOCKER_IMAGE}"
               sh "ssh-add -l"
               sh "docker run -v \"\$(pwd)\"/migrations:/migrations -v \"\$(pwd)\"/pipeline:/pipeline -v \"\$(pwd)\"/hcl:/hcl ${env.CLI_DOCKER_IMAGE} --migration-dir=/migrations --pipeline-file=/pipeline/b2b-asset-pipeline.yaml --pipeline-output-file=/pipeline/b2b-asset-pipeline.yaml --hcl-output-dir=/hcl"
               sh "cd hcl && GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIAL_FILE terraform init && GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIAL_FILE terraform plan -out ../planfile"
