@@ -1,0 +1,10 @@
+migration:
+  name: deploy-nyx-nj-v1-to-qa
+  deployments:
+  - type: integration_asset
+    jurisdiction: nj
+    integrator: nyx
+    sdlc_environment: qa
+    integration_bundle:
+      nexus_identifier: test
+      version: 1.0.0
