@@ -1,0 +1,41 @@
+migration:
+  name: deploy-nyx-nj-integration-assets-v2-through-prod
+  deployments:
+  - type: integration_asset
+    jurisdiction: nj
+    integrator: nyx
+    sdlc_environment: qa
+    integration_bundle:
+      nexus_identifier: nyx-nj-int
+      version: 2.0.0
+  promotions:
+  - type: integration_asset
+    selector:
+      jurisdiction: nj
+      integrator: nyx
+      sdlc_environment: qa
+      integration_bundle:
+        nexus_identifier: nyx-nj-int
+        version: 2.0.0
+    target:
+      sdlc_environment: int-test
+  - type: integration_asset
+    selector:
+      jurisdiction: nj
+      integrator: nyx
+      sdlc_environment: int-test
+      integration_bundle:
+        nexus_identifier: nyx-nj-int
+        version: 2.0.0
+    target:
+      sdlc_environment: stage
+  - type: integration_asset
+    selector:
+      jurisdiction: nj
+      integrator: nyx
+      sdlc_environment: stage
+      integration_bundle:
+        nexus_identifier: nyx-nj-int
+        version: 2.0.0
+    target:
+      sdlc_environment: prod

@@ -1,0 +1,53 @@
+migration:
+  name: deploy-golden-goddess-v2-through-prod-pp
+  deployments:
+  - type: game_asset
+    jurisdiction: gib
+    integrator: pp
+    sdlc_environment: qa
+    game:
+      name: gg
+      jurisdiction: gib
+      version:
+        nexus_identifier: gg
+        version: 2.0.0
+  promotions:
+  - type: game_asset
+    selector:
+      jurisdiction: gib
+      integrator: pp
+      sdlc_environment: qa
+      game:
+        name: gg
+        jurisdiction: gib
+        version:
+          nexus_identifier: gg
+          version: 2.0.0
+    target:
+      sdlc_environment: int-test
+  - type: game_asset
+    selector:
+      jurisdiction: gib
+      integrator: pp
+      sdlc_environment: int-test
+      game:
+        name: gg
+        jurisdiction: gib
+        version:
+          nexus_identifier: gg
+          version: 2.0.0
+    target:
+      sdlc_environment: stage
+  - type: game_asset
+    selector:
+      jurisdiction: gib
+      integrator: pp
+      sdlc_environment: stage
+      game:
+        name: gg
+        jurisdiction: gib
+        version:
+          nexus_identifier: gg
+          version: 2.0.0
+    target:
+      sdlc_environment: prod

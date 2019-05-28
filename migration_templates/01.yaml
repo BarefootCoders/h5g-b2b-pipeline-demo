@@ -1,0 +1,130 @@
+migration:
+  name: deploy-baseline-v1-through-prod
+  deployments:
+  - type: integration_asset
+    jurisdiction: nj
+    integrator: nyx
+    sdlc_environment: qa
+    integration_bundle:
+      nexus_identifier: nyx-nj-int
+      version: 1.0.0
+  - type: integration_asset
+    jurisdiction: gib
+    integrator: pp
+    sdlc_environment: qa
+    integration_bundle:
+      nexus_identifier: gib-pp-int
+      version: 1.0.0
+  - type: game_asset
+    jurisdiction: nj
+    integrator: nyx
+    sdlc_environment: qa
+    game:
+      name: gg
+      jurisdiction: nj
+      version:
+        nexus_identifier: gg
+        version: 1.0.0
+  - type: game_asset
+    jurisdiction: gib
+    integrator: pp
+    sdlc_environment: qa
+    game:
+      name: gg
+      jurisdiction: gib
+      version:
+        nexus_identifier: gg
+        version: 1.0.0
+  - type: game_asset
+    jurisdiction: nj
+    integrator: nyx
+    sdlc_environment: qa
+    game:
+      name: sotf
+      jurisdiction: nj
+      version:
+        nexus_identifier: sotf
+        version: 1.0.0
+  - type: game_asset
+    jurisdiction: gib
+    integrator: pp
+    sdlc_environment: qa
+    game:
+      name: sotf
+      jurisdiction: gib
+      version:
+        nexus_identifier: sotf
+        version: 1.0.0
+  promotions:
+  - type: integration_asset
+    selector:
+      jurisdiction: nj
+      integrator: nyx
+      sdlc_environment: qa
+      integration_bundle:
+        nexus_identifier: nyx-nj-int
+        version: 1.0.0
+    target:
+      sdlc_environment: int-test
+  - type: integration_asset
+    selector:
+      jurisdiction: gib
+      integrator: pp
+      sdlc_environment: qa
+      integration_bundle:
+        nexus_identifier: gib-pp-int
+        version: 1.0.0
+    target:
+      sdlc_environment: int-test
+  - type: game_asset
+    selector:
+      jurisdiction: nj
+      integrator: nyx
+      sdlc_environment: qa
+      game:
+        name: gg
+        jurisdiction: nj
+        version:
+          nexus_identifier: gg
+          version: 1.0.0
+    target:
+      sdlc_environment: int-test
+  - type: game_asset
+    selector:
+      jurisdiction: gib
+      integrator: pp
+      sdlc_environment: qa
+      game:
+        name: gg
+        jurisdiction: gib
+        version:
+          nexus_identifier: gg
+          version: 1.0.0
+    target:
+      sdlc_environment: int-test
+  - type: game_asset
+    selector:
+      jurisdiction: nj
+      integrator: nyx
+      sdlc_environment: qa
+      game:
+        name: sotf
+        jurisdiction: nj
+        version:
+          nexus_identifier: sotf
+          version: 1.0.0
+    target:
+      sdlc_environment: int-test
+  - type: game_asset
+    selector:
+      jurisdiction: gib
+      integrator: pp
+      sdlc_environment: qa
+      game:
+        name: sotf
+        jurisdiction: gib
+        version:
+          nexus_identifier: sotf
+          version: 1.0.0
+    target:
+      sdlc_environment: int-test
